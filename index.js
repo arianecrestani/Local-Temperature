@@ -11,38 +11,57 @@ const getCurrentWeather = async (city) => {
         .then((json) => createCurrentTemp(json));
 };
 
+const getImagePlace = async (city) => {
+    const baseUrl = "https://pixabay.com/api/?";
+    const apiKey = "21079899-b6d36b2d97a91f9583927dd0f";
+
+    return await fetch(
+        `${baseUrl}key=${apiKey}&q=${city}&category=places&orientation=horizontal&per_page=3`
+    )
+        .then((response) => response.json())
+        .then((json) => createPixabayDataFromJson(json));
+};
+
 const generateButtonClick = () => {
     getCurrentWeather(inputCity.value).then((json) => updateUi(json));
+    getImagePlace(inputCity.value).then((json) => updateImg(json));
 };
 
 generate.addEventListener("click", generateButtonClick);
 
 const createCurrentTemp = (dataJs) => {
     return {
-        currentTemp : dataJs.data[0].temp,
-        description : dataJs.data[0].weather.description,
-        icon : dataJs.data[0].weather.icon,
-        timezone : dataJs.data[0].timezone
-       
-
+        currentTemp: dataJs.data[0].temp,
+        description: dataJs.data[0].weather.description,
+        icon: dataJs.data[0].weather.icon,
+        timezone: dataJs.data[0].timezone,
     };
 };
+
+const createPixabayDataFromJson = (dataJs) => {
+    return {
+        placeImage: dataJs.hits[0].webformatURL,
+    }
+}
 
 const updateUi = (weather) => {
     inputCity.value = "";
 
     const currentTemp = document.getElementById("currentTemp");
-    const description = document.getElementById('description')
-    const iconWeather = document.getElementById('icon')
-    const timezone = document.getElementById('timezone')
-
+    const description = document.getElementById("description");
+    const iconWeather = document.getElementById("icon");
+    const timezone = document.getElementById("timezone");
 
     currentTemp.innerHTML = `Today ${Math.ceil(weather.currentTemp)}°C`;
-    description.innerHTML = weather.description ? weather.description: "";
+    description.innerHTML = weather.description ? weather.description : "";
     iconWeather.src = `https://www.weatherbit.io/static/img/icons/${weather.icon}.png`;
-    timezone.innerHTML = weather.timezone ? weather.timezone: "";
+    timezone.innerHTML = weather.timezone ? weather.timezone : "";
 };
 
-// const result = (dataJson) =>{
+const updateImg = (picture) => {
 
-//     currentTemp : dataJson.data[0].temp;
+    const placeImage = document.getElementsByClassName("placeImage")[0];
+    
+    placeImage.src = picture.placeImage;
+
+}
