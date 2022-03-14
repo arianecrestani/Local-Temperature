@@ -19,7 +19,11 @@ generate.addEventListener("click", generateButtonClick);
 
 const createCurrentTemp = (dataJs) => {
     return {
-        currentTemp: dataJs.data[0].temp,
+        currentTemp : dataJs.data[0].temp,
+        description : dataJs.data[0].weather.description,
+        icon : dataJs.data[0].weather.icon,
+       
+
     };
 };
 
@@ -27,9 +31,13 @@ const updateUi = (weather) => {
     inputCity.value = "";
 
     const currentTemp = document.getElementById("currentTemp");
-    // const min_temp = document.getElementById('min_temp')
+    const description = document.getElementById('description')
+    const iconWeather = document.getElementById('icon')
+
 
     currentTemp.innerHTML = `Today ${Math.ceil(weather.currentTemp)}°C`;
+    description.innerHTML = weather.description ? weather.description: "";
+    iconWeather.src = `https://www.weatherbit.io/static/img/icons/${weather.icon}.png`;
 };
 
 // const result = (dataJson) =>{
