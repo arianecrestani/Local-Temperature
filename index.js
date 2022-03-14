@@ -22,6 +22,7 @@ const createCurrentTemp = (dataJs) => {
         currentTemp : dataJs.data[0].temp,
         description : dataJs.data[0].weather.description,
         icon : dataJs.data[0].weather.icon,
+        timezone : dataJs.data[0].timezone
        
 
     };
@@ -33,11 +34,13 @@ const updateUi = (weather) => {
     const currentTemp = document.getElementById("currentTemp");
     const description = document.getElementById('description')
     const iconWeather = document.getElementById('icon')
+    const timezone = document.getElementById('timezone')
 
 
     currentTemp.innerHTML = `Today ${Math.ceil(weather.currentTemp)}°C`;
     description.innerHTML = weather.description ? weather.description: "";
     iconWeather.src = `https://www.weatherbit.io/static/img/icons/${weather.icon}.png`;
+    timezone.innerHTML = weather.timezone ? weather.timezone: "";
 };
 
 // const result = (dataJson) =>{
