@@ -9,7 +9,7 @@ header {
     max-height: 3rem;
     text-align: center;
     text-decoration: dotted;
-    font-size: 50px;
+    font-size: 40px;
 }
 #app {
     display: flex;
@@ -62,5 +62,5 @@ header {
 } */
 
 #descriptionImg {
-   padding-right: 20rem;
+   text-align: center;
 }

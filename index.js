@@ -33,17 +33,13 @@ const getInfoCity = async (code) => {
 const generateButtonClick = () => {
     getCurrentWeather(inputCity.value).then((json) => updateUi(json));
     getImagePlace(inputCity.value).then((json) => updateImg(json));
-    cityName()
-
-    
+    cityName();
 };
 
 const cityName = () => {
-const city = document.getElementById('entryCity')
-    city.innerHTML = inputCity.value
-   
-}
-
+    const city = document.getElementById("entryCity");
+    city.innerHTML = inputCity.value;
+};
 
 generate.addEventListener("click", generateButtonClick);
 
@@ -75,7 +71,8 @@ const updateUi = (weather) => {
     description.innerHTML = weather.description ? weather.description : "";
     iconWeather.src = `https://www.weatherbit.io/static/img/icons/${weather.icon}.png`;
     timezone.innerHTML = weather.timezone ? weather.timezone : "";
-};
+
+}
 
 const updateImg = (picture) => {
     const placeImage = document.getElementsByClassName("placeImage")[0];
