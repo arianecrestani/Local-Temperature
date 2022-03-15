@@ -22,13 +22,6 @@ const getImagePlace = async (city) => {
         .then((json) => createPixabayDataFromJson(json));
 };
 
-const getInfoCity = async (code) => {
-    const baseUrl = "https://restcountries.com/v2/alpha/?";
-
-    return await fetch(`${baseUrl}&q=${code}`)
-        .then((response) => response.json())
-        .then((json) => createRestCountryDataFromJson(json));
-};
 
 const generateButtonClick = () => {
     getCurrentWeather(inputCity.value).then((json) => updateUi(json));

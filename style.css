@@ -1,6 +1,8 @@
 body {
     margin: 0%;
     padding: 0%;
+    background-color:rgb( 241, 245, 248);
+    font-family: "Open Sans", sans-serif;
 }
 
 header {
@@ -17,23 +19,25 @@ header {
     align-items: center;
     padding: 5rem;
     min-width: 800px;
-    margin-right: 8%;
-    margin-left: 8%;
+    margin-right: 10%;
+    margin-left: 10%;
     flex-direction: wrap;
     border-radius: 2rem;
     border: solid #c59d5f;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 
 }
 #content {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-  
 }
 #weather {
-    padding: 7rem;
+    padding: 3rem;
+    flex-direction: column;
+    padding-left: 7rem;
+ 
+
 
 }
 .placeImage {
@@ -44,10 +48,9 @@ header {
     min-width: 500px
 }
 #inputCity {
-    width: 15rem;
+    width: 10rem;
     height: 20px;
     padding: 5px;
-    margin: 7px;
     border:solid; 
     outline: none;
 }
@@ -56,10 +59,8 @@ header {
     outline: none;
     padding: 2px;
     color: white;
+    width: 5rem;
 }
-/* #entryHolder {
-    margin: 2px;
-} */
 
 #descriptionImg {
    text-align: center;
