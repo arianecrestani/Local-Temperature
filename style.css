@@ -43,3 +43,24 @@ header {
     border: solid #c59d5f;
     min-width: 500px
 }
+#inputCity {
+    width: 15rem;
+    height: 20px;
+    padding: 5px;
+    margin: 7px;
+    border:solid; 
+    outline: none;
+}
+#generate {
+    background-color: black;
+    outline: none;
+    padding: 2px;
+    color: white;
+}
+/* #entryHolder {
+    margin: 2px;
+} */
+
+#descriptionImg {
+   padding-right: 20rem;
+}

@@ -33,11 +33,17 @@ const getInfoCity = async (code) => {
 const generateButtonClick = () => {
     getCurrentWeather(inputCity.value).then((json) => updateUi(json));
     getImagePlace(inputCity.value).then((json) => updateImg(json));
+    cityName()
 
-    const city = document.getElementById('entryCity')
-    city.innerHTML = inputCity.value
-    city.appendChild('city')
+    
 };
+
+const cityName = () => {
+const city = document.getElementById('entryCity')
+    city.innerHTML = inputCity.value
+   
+}
+
 
 generate.addEventListener("click", generateButtonClick);
 
