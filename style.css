@@ -31,13 +31,13 @@ header {
 #content {
     display: flex;
     justify-content: center;
+  
 }
 #weather {
     padding: 3rem;
     flex-direction: column;
     padding-left: 7rem;
- 
-
+    
 
 }
 .placeImage {

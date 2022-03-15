@@ -1,10 +1,10 @@
 const inputCity = document.getElementById("inputCity");
 const generate = document.getElementById("generate");
 
-const getCurrentWeather = async (city, country) => {
+const getCurrentWeather = async (city) => {
     const baseUrl = "http://api.weatherbit.io/v2.0/current?";
     const apiKey = "64e2aeb35084463da3c0fc13d427f7d5";
-    const url = `${baseUrl}key=${apiKey}&include=minutely&city=${city}&country=${country}`;
+    const url = `${baseUrl}key=${apiKey}&include=minutely&city=${city}`;
 
     return await fetch(url)
         .then((response) => response.json())
