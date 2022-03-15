@@ -22,10 +22,21 @@ const getImagePlace = async (city) => {
         .then((json) => createPixabayDataFromJson(json));
 };
 
+const getInfoCity = async (code) => {
+    const baseUrl = "https://restcountries.com/v2/alpha/?";
+
+    return await fetch(`${baseUrl}&q=${code}`)
+        .then((response) => response.json())
+        .then((json) => createRestCountryDataFromJson(json));
+};
 
 const generateButtonClick = () => {
     getCurrentWeather(inputCity.value).then((json) => updateUi(json));
     getImagePlace(inputCity.value).then((json) => updateImg(json));
+
+    const city = document.getElementById('entryCity')
+    city.innerHTML = inputCity.value
+    city.appendChild('city')
 };
 
 generate.addEventListener("click", generateButtonClick);
@@ -43,8 +54,8 @@ const createPixabayDataFromJson = (dataJs) => {
     return {
         placeImage: dataJs.hits[0].webformatURL,
         tags: dataJs.hits[0].tags,
-    }
-}
+    };
+};
 
 const updateUi = (weather) => {
     inputCity.value = "";
@@ -61,13 +72,9 @@ const updateUi = (weather) => {
 };
 
 const updateImg = (picture) => {
-
     const placeImage = document.getElementsByClassName("placeImage")[0];
-    const tags = document.getElementById('descriptionImg')
-
+    const tags = document.getElementById("descriptionImg");
 
     placeImage.src = picture.placeImage;
-    tags.innerHTML = picture.tags ? picture.tags: '';
-
-
-}
+    tags.innerHTML = picture.tags ? picture.tags : "";
+};

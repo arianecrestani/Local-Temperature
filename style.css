@@ -15,16 +15,15 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10rem;
-    min-width: 1000px;
-    margin-right: 10%;
-    margin-left: 10%;
+    padding: 5rem;
+    min-width: 800px;
+    margin-right: 8%;
+    margin-left: 8%;
     flex-direction: wrap;
     border-radius: 2rem;
     border: solid #c59d5f;
     margin-top: 5%;
-   
-
+    margin-bottom: 5%;
 
 }
 #content {
