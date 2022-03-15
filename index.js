@@ -1,10 +1,10 @@
 const inputCity = document.getElementById("inputCity");
 const generate = document.getElementById("generate");
 
-const getCurrentWeather = async (city) => {
+const getCurrentWeather = async (city, country) => {
     const baseUrl = "http://api.weatherbit.io/v2.0/current?";
     const apiKey = "64e2aeb35084463da3c0fc13d427f7d5";
-    const url = `${baseUrl}key=${apiKey}&include=minutely&city=${city}`;
+    const url = `${baseUrl}key=${apiKey}&include=minutely&city=${city}&country=${country}`;
 
     return await fetch(url)
         .then((response) => response.json())
@@ -16,11 +16,12 @@ const getImagePlace = async (city) => {
     const apiKey = "21079899-b6d36b2d97a91f9583927dd0f";
 
     return await fetch(
-        `${baseUrl}key=${apiKey}&q=${city}&category=places&orientation=horizontal&per_page=3`
+        `${baseUrl}key=${apiKey}&q=${city}&category=buildings&orientation=horizontal&per_page=3`
     )
         .then((response) => response.json())
         .then((json) => createPixabayDataFromJson(json));
 };
+
 
 const generateButtonClick = () => {
     getCurrentWeather(inputCity.value).then((json) => updateUi(json));
@@ -41,6 +42,7 @@ const createCurrentTemp = (dataJs) => {
 const createPixabayDataFromJson = (dataJs) => {
     return {
         placeImage: dataJs.hits[0].webformatURL,
+        tags: dataJs.hits[0].tags,
     }
 }
 
@@ -61,7 +63,11 @@ const updateUi = (weather) => {
 const updateImg = (picture) => {
 
     const placeImage = document.getElementsByClassName("placeImage")[0];
-    
+    const tags = document.getElementById('descriptionImg')
+
+
     placeImage.src = picture.placeImage;
+    tags.innerHTML = picture.tags ? picture.tags: '';
+
 
 }
