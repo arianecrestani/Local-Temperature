@@ -10,7 +10,6 @@ Vanilla javacsript
 
 ### Preview.
 
-https://arianecrestani.github.io/Local-Temperature/
 
 ![](./Screenshot.png)
 
